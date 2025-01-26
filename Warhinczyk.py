@@ -43,7 +43,7 @@ def game():
         player2.current=0
         player1.score=0
         player2.score=0
-    return render_template('gra/game.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/game.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
 #rzut kostka, ruchy w /game/<costam>
 
 @Warhinczyk.route("/game/p1", methods=["POST","GET"])
@@ -62,29 +62,29 @@ def movep1():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player2.current>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -96,7 +96,7 @@ def movep1():
                 fields.field[player1.current+now]=pionki[1]
                 fields.field[player1.current]=0
                 player1.current=player1.current+now
-    return render_template('gra/gamep2_1.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+    return render_template('gra/gamep2_1.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 @Warhinczyk.route("/game/p2", methods=["POST","GET"])
 def movep2():
@@ -114,29 +114,29 @@ def movep2():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player2.current>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -151,7 +151,7 @@ def movep2():
                fields.field[player1.current+now]=pionki[2]
                fields.field[player1.current]=0
                player1.current=player1.current+now
-    return render_template('gra/gamep2_2.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep2_2.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 @Warhinczyk.route("/game/p3", methods=["POST","GET"])
 def movep3():
@@ -169,29 +169,29 @@ def movep3():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player2.current>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -204,7 +204,7 @@ def movep3():
                 fields.field[player1.current+now]=pionki[3]
                 fields.field[player1.current]=0
                 player1.current=player1.current+now
-    return render_template('gra/gamep2_3.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep2_3.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 #----------------------------------------------------------------------------------
 
@@ -221,29 +221,29 @@ def movep4():
         else:
             now=random.randint(1, 3)
         if player2.current>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -255,7 +255,7 @@ def movep4():
                 fields.field[player2.current+now]=pionki[4]
                 fields.field[player2.current]=0
                 player2.current=player2.current+now
-    return render_template('gra/gamep1_1.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep1_1.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 @Warhinczyk.route("/game/p5", methods=["POST","GET"])
 def movep5():
@@ -279,20 +279,20 @@ def movep5():
             else:
                return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -307,7 +307,7 @@ def movep5():
                 fields.field[player2.current+now]=pionki[5]
                 fields.field[player2.current]=0
                 player2.current=player2.current+now
-    return render_template('gra/gamep1_2.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep1_2.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 @Warhinczyk.route("/game/p6", methods=["POST","GET"])
 def movep6():
@@ -322,29 +322,29 @@ def movep6():
         else:
             now=random.randint(1, 3)
         if player2.current>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            if player2.score<35:
+            player2.score+=10
+            if player2.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player2.score+=10
                return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/win.html')
         elif player1.current>=len(fields.field):
-            if player1.score<35:
+            player1.score+=10
+            if player1.score<30:
                fields.field=[0,0,0,0,0,0,0,0,0,0]
                player1.current=0
                player2.current=0
-               player1.score+=10
                return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
             else:
                return render_template('gra/loose.html')
@@ -357,7 +357,7 @@ def movep6():
                 fields.field[player2.current+now]=pionki[6]
                 fields.field[player2.current]=0
                 player2.current=player2.current+now
-    return render_template('gra/gamep1_3.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep1_3.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score,now=now)
 
 
 #@Warhinczyk.route("/game", methods=["POST","GET"])

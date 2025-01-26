@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,9 @@
 {% block body %}
 <br><br>
 <div class="content">
+    <h4>Player 1 score: {{P1score}}</h4>
+    <h4>Player 2 score: {{P2score}}</h4>
+    <br><br>
     <table>
         {% for i in fields %}
            <a> {{ i }}</a>
@@ -20,10 +24,12 @@
                <a>&nbsp;&nbsp;&nbsp;</a> 
            {% endif %}-->
         {% endfor %}
-        <br><br>
+        <br>
+        <a>Number of fields: {{ now }}</a>
+        <br>
     </table>
     <form action="/game/p5" method="POST">
-        <input type="submit" value="Next Field 2" id="btn_add" />
+        <input type="submit" value="Next Field (P2)" id="btn_add" />
     </form>
 </div>
 {% endblock %}

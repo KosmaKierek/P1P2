@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+{% block body %}
+<br><br>
+<div class="content">
     <h1>YOU WIN P1</h1>
     <h1>YOU LOOSE P2</h1>
+<form action="/game" method="GET">
+    <input type="submit" value="Play again" id="btn_add" />
+</form>
+</div>
+{% endblock %}
 </body>
 </html>

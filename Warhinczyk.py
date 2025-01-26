@@ -38,9 +38,11 @@ pionki = {
 @Warhinczyk.route("/game", methods=["POST","GET"])
 def game():
     if request.method == "GET":
+        fields.field=[0,0,0,0,0,0,0,0,0,0]
         player1.current=0
         player2.current=0
-        fields.field=[0,0,0,0,0,0,0,0,0,0]
+        player1.score=0
+        player2.score=0
     return render_template('gra/game.html',fields=fields.field,pionki=pionki)
 #rzut kostka, ruchy w /game/<costam>
 
@@ -60,11 +62,32 @@ def movep1():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player1.current+now<len(fields.field):
             if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
                 fields.field[player1.current]=0
@@ -73,7 +96,7 @@ def movep1():
                 fields.field[player1.current+now]=pionki[1]
                 fields.field[player1.current]=0
                 player1.current=player1.current+now
-    return render_template('gra/gamep2_1.html',fields=fields.field,pionki=pionki)
+    return render_template('gra/gamep2_1.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
 
 @Warhinczyk.route("/game/p2", methods=["POST","GET"])
 def movep2():
@@ -91,11 +114,32 @@ def movep2():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            return render_template('gra/win.html')
-        elif player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
+        elif player2.current>=len(fields.field):
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player1.current+now<len(fields.field):
             if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
                fields.field[player2.current]=0
@@ -125,11 +169,32 @@ def movep3():
         #  wygrana do wyboru jaki pionek przez wygranego
         #
         if player1.current>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player1.current+now>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player1.current+now<len(fields.field):
             if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
                 fields.field[player1.current]=0
@@ -156,11 +221,32 @@ def movep4():
         else:
             now=random.randint(1, 3)
         if player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
-        elif player1.current>=len(fields.field):
-            return render_template('gra/win.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
+        elif player1.current>=len(fields.field):
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player2.current+now<len(fields.field):
             if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
                 fields.field[player2.current]=0
@@ -184,11 +270,32 @@ def movep5():
         else:
             now=random.randint(1, 3)
         if player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player1.current>=len(fields.field):
-            return render_template('gra/win.html')
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player2.current+now<len(fields.field):
             if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
                 fields.field[player1.current]=0
@@ -215,11 +322,32 @@ def movep6():
         else:
             now=random.randint(1, 3)
         if player2.current>=len(fields.field):
-            return render_template('gra/loose.html')
-        elif player1.current>=len(fields.field):
-            return render_template('gra/win.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
         elif player2.current+now>=len(fields.field):
-            return render_template('gra/loose.html')
+            if player2.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player2.score+=10
+               return render_template('gra/P2win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/win.html')
+        elif player1.current>=len(fields.field):
+            if player1.score<35:
+               fields.field=[0,0,0,0,0,0,0,0,0,0]
+               player1.current=0
+               player2.current=0
+               player1.score+=10
+               return render_template('gra/P1win.html',fields=fields.field,pionki=pionki,P1score=player1.score,P2score=player2.score)
+            else:
+               return render_template('gra/loose.html')
         elif player2.current+now<len(fields.field):
             if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
                 fields.field[player2.current]=0

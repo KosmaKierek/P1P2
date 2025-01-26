@@ -59,17 +59,20 @@ def movep1():
         #
         #  wygrana do wyboru jaki pionek przez wygranego
         #
-        if player1.current+now>=len(fields.field): #and player1.current>=player2.current:
+        if player1.current>=len(fields.field):
             return render_template('gra/win.html')
-        #elif player1.current+now<len(fields.field) and player1.current<player2.current:
-            #return render_template('gra/loose.html')
-        if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0) or (fields.field[player1.current+now]==fields.field[player1.current] and player1.current!=0):
-            fields.field[player1.current]=0
-            player1.current=0
-        else:
-            fields.field[player1.current+now]=pionki[1]
-            fields.field[player1.current]=0
-            player1.current=player1.current+now
+        elif player1.current+now>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player2.current>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player1.current+now<len(fields.field):
+            if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
+                fields.field[player1.current]=0
+                player1.current=0
+            else:
+                fields.field[player1.current+now]=pionki[1]
+                fields.field[player1.current]=0
+                player1.current=player1.current+now
     return render_template('gra/gamep2_1.html',fields=fields.field,pionki=pionki)
 
 @Warhinczyk.route("/game/p2", methods=["POST","GET"])
@@ -87,17 +90,23 @@ def movep2():
         #
         #  wygrana do wyboru jaki pionek przez wygranego
         #
-        if player1.current+now>=len(fields.field): #and player1.current>=player2.current:
+        if player1.current>=len(fields.field):
             return render_template('gra/win.html')
-        #elif player1.current+now<len(fields.field) and player1.current<player2.current:
-            #return render_template('gra/loose.html')
-        if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0) or (fields.field[player1.current+now]==fields.field[player1.current] and player1.current!=0):
-            fields.field[player1.current]=0
-            player1.current=0
-        else:
-            fields.field[player1.current+now]=pionki[2]
-            fields.field[player1.current]=0
-            player1.current=player1.current+now
+        elif player2.current>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player1.current+now>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player1.current+now<len(fields.field):
+            if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
+               fields.field[player2.current]=0
+               player2.current=0
+               fields.field[player1.current+now]=pionki[2]
+               fields.field[player1.current]=0
+               player1.current=player1.current+now
+            else:
+               fields.field[player1.current+now]=pionki[2]
+               fields.field[player1.current]=0
+               player1.current=player1.current+now
     return render_template('gra/gamep2_2.html',fields=fields.field,pionki=pionki)
 
 @Warhinczyk.route("/game/p3", methods=["POST","GET"])
@@ -115,17 +124,21 @@ def movep3():
         #
         #  wygrana do wyboru jaki pionek przez wygranego
         #
-        if player1.current+now>=len(fields.field): #and player1.current>=player2.current:
+        if player1.current>=len(fields.field):
             return render_template('gra/win.html')
-        #elif player1.current+now<len(fields.field) and player1.current<player2.current:
-            #return render_template('gra/loose.html')
-        if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0) or (fields.field[player1.current+now]==fields.field[player1.current] and player1.current!=0):
-            fields.field[player1.current]=0
-            player1.current=0
-        else:
-            fields.field[player1.current+now]=pionki[3]
-            fields.field[player1.current]=0
-            player1.current=player1.current+now
+        elif player1.current+now>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player2.current>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player1.current+now<len(fields.field):
+            if (fields.field[player1.current+now]==fields.field[player2.current] and player2.current!=0):
+                fields.field[player1.current]=0
+                fields.field[player1.current+now-1]=pionki[3]
+                player1.current=player1.current+now-1
+            else:
+                fields.field[player1.current+now]=pionki[3]
+                fields.field[player1.current]=0
+                player1.current=player1.current+now
     return render_template('gra/gamep2_3.html',fields=fields.field,pionki=pionki)
 
 #----------------------------------------------------------------------------------
@@ -142,17 +155,20 @@ def movep4():
             now=random.randint(1, 2)
         else:
             now=random.randint(1, 3)
-        if player2.current+now>=len(fields.field): #and player2.current>=player1.current:
+        if player2.current>=len(fields.field):
             return render_template('gra/loose.html')
-        #elif player2.current+now<len(fields.field) and player2.current<player1.current:
-            #return render_template('gra/win.html')
-        if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0) or (fields.field[player2.current+now]==fields.field[player2.current] and player2.current!=0):
-            fields.field[player2.current]=0
-            player2.current=0
-        else:
-            fields.field[player2.current+now]=pionki[4]
-            fields.field[player2.current]=0
-            player2.current=player2.current+now
+        elif player1.current>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player2.current+now>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player2.current+now<len(fields.field):
+            if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
+                fields.field[player2.current]=0
+                player2.current=0
+            else:
+                fields.field[player2.current+now]=pionki[4]
+                fields.field[player2.current]=0
+                player2.current=player2.current+now
     return render_template('gra/gamep1_1.html',fields=fields.field,pionki=pionki)
 
 @Warhinczyk.route("/game/p5", methods=["POST","GET"])
@@ -167,17 +183,23 @@ def movep5():
             now=random.randint(1, 2)
         else:
             now=random.randint(1, 3)
-        if player2.current+now>=len(fields.field): #and player2.current>=player1.current:
+        if player2.current>=len(fields.field):
             return render_template('gra/loose.html')
-        #elif player2.current+now<len(fields.field) and player2.current<player1.current:
-            #return render_template('gra/win.html')
-        if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0) or (fields.field[player2.current+now]==fields.field[player2.current] and player2.current!=0):
-            fields.field[player2.current]=0
-            player2.current=0
-        else:
-            fields.field[player2.current+now]=pionki[5]
-            fields.field[player2.current]=0
-            player2.current=player2.current+now
+        elif player2.current+now>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player1.current>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player2.current+now<len(fields.field):
+            if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
+                fields.field[player1.current]=0
+                player1.current=0
+                fields.field[player2.current+now]=pionki[5]
+                fields.field[player2.current]=0
+                player2.current=player2.current+now
+            else:
+                fields.field[player2.current+now]=pionki[5]
+                fields.field[player2.current]=0
+                player2.current=player2.current+now
     return render_template('gra/gamep1_2.html',fields=fields.field,pionki=pionki)
 
 @Warhinczyk.route("/game/p6", methods=["POST","GET"])
@@ -192,17 +214,21 @@ def movep6():
             now=random.randint(1, 2)
         else:
             now=random.randint(1, 3)
-        if player2.current+now>=len(fields.field): #and player2.current>=player1.current:
+        if player2.current>=len(fields.field):
             return render_template('gra/loose.html')
-        #elif player2.current+now<len(fields.field) and player2.current<player1.current:
-            #return render_template('gra/win.html')
-        if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0) or (fields.field[player2.current+now]==fields.field[player2.current] and player2.current!=0):
-            fields.field[player2.current]=0
-            player2.current=0
-        else:
-            fields.field[player2.current+now]=pionki[6]
-            fields.field[player2.current]=0
-            player2.current=player2.current+now
+        elif player1.current>=len(fields.field):
+            return render_template('gra/win.html')
+        elif player2.current+now>=len(fields.field):
+            return render_template('gra/loose.html')
+        elif player2.current+now<len(fields.field):
+            if (fields.field[player2.current+now]==fields.field[player1.current] and player1.current!=0):
+                fields.field[player2.current]=0
+                fields.field[player2.current+now-1]=pionki[6]
+                player2.current=player2.current+now-1
+            else:
+                fields.field[player2.current+now]=pionki[6]
+                fields.field[player2.current]=0
+                player2.current=player2.current+now
     return render_template('gra/gamep1_3.html',fields=fields.field,pionki=pionki)
 
 

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+<br><br>
+<div class="content">
+    <h4>Player 1 score: {{P1score}}</h4>
+    <h4>Player 2 score: {{P2score}}</h4>
+    <br><br>
+    <table>
+        {% for i in fields %}
+           {% if i==pionki[1] %}
+              <a><img src="{{ url_for('static', filename='images/p1.jpg') }}" height="20px" width="20px"></a>
+           {% elif i==pionki[4] %}
+              <a><img src="{{ url_for('static', filename='images/p2.jpg') }}" height="20px" width="20px"></a>
+           {% else %}
+              <a>&nbsp;&nbsp;&nbsp;</a> 
+           {% endif %}
+        {% endfor %}
+        <br>
+        <a>Number of fields: {{ now }}</a>
+        <br>
+    </table>
+    <form action="/gameAI/p1" method="POST">
+        <input type="submit" value="Next Field (P1)" id="btn_add" />
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>

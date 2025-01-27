@@ -15,7 +15,7 @@
     <br><br>
     <table>
         {% for i in fields %}
-           <a> {{ i }}</a>
+           <a>&nbsp;&nbsp;&nbsp;</a>
            <!--{% if fields[i]==pionki[1] %}
                <img src="static/images/p1.jpg" height="10px" width="10px">
            {% elif fields[i]==pionki[4] %}
@@ -27,14 +27,38 @@
         <br><br>
     </table>
     <form action="/gameAI/p4" method="POST">
-        <input type="submit" value="Choose and play 1 as P2" id="btn_add" />
+        <button id="click1" type="submit"></button>
     </form>
     <form action="/gameAI/p5" method="POST">
-        <input type="submit" value="Choose and play 2 as P2" id="btn_add" />
+        <button id="click2" type="submit"></button>
     </form>
     <form action="/gameAI/p6" method="POST">
-        <input type="submit" value="Choose and play 3 as P2" id="btn_add" />
+        <button id="click3" type="submit"></button>
     </form>
+    <script>
+        choice=Math.floor(Math.random() * 3) + 1;
+        if (choice==1){
+            const button = document.getElementById('click1');
+            function autoClick() {
+              button.click();
+            }
+            setTimeout(autoClick, 1000);
+        }
+        else if (choice==2){
+            const button = document.getElementById('click2');
+            function autoClick() {
+              button.click();
+            }
+            setTimeout(autoClick, 1000);
+        }
+        else {
+            const button = document.getElementById('click3');
+            function autoClick() {
+              button.click();
+            }
+            setTimeout(autoClick, 1000);
+        }
+    </script>
 </div>
 {% endblock %}
 </body>

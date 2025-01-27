@@ -29,7 +29,14 @@
         <br>
     </table>
     <form action="/gameAI/p4" method="POST">
-        <input type="submit" value="Next Field (P2)" id="btn_add" />
+        <button id="click" type="submit"></button>
+        <script>
+            const button = document.getElementById('click');
+            function autoClick() {
+              button.click();
+            }
+            setTimeout(autoClick, 1000);
+        </script>
     </form>
 </div>
 {% endblock %}

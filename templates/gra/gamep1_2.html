@@ -15,14 +15,13 @@
     <br><br>
     <table>
         {% for i in fields %}
-           <a> {{ i }}</a>
-           <!--{% if fields[i]==pionki[1] %}
-               <img src="static/images/p1.jpg" height="10px" width="10px">
-           {% elif fields[i]==pionki[4] %}
-               <img src="static/images/p2.jpg" height="10px" width="10px">
-           {% else %}
+            {% if i==pionki[2] %}
+               <a><img src="{{ url_for('static', filename='images/p1_2.jpg') }}" height="20px" width="20px"></a>
+            {% elif i==pionki[5] %}
+               <a><img src="{{ url_for('static', filename='images/p2_2.jpg') }}" height="20px" width="20px"></a>
+            {% else %}
                <a>&nbsp;&nbsp;&nbsp;</a> 
-           {% endif %}-->
+            {% endif %}
         {% endfor %}
         <br>
         <a>Number of fields: {{ now }}</a>

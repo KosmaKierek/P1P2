@@ -1,4 +1,4 @@
-from flask import Flask, render_template, render_template_string, redirect, request, session, redirect, url_for
+from flask import Blueprint, Flask, render_template, render_template_string, redirect, request, session, redirect, url_for
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -6,13 +6,12 @@ from WarhinczykAI import WarhinczykAI
 import random
 
 #app setup
-Warhinczyk = Flask(__name__)
-Warhinczyk.register_blueprint(WarhinczykAI, url_prefix="")
-Scss(Warhinczyk)
+Warhinczyk = Blueprint("Warhinczyk", __name__, static_folder="static", template_folder="templates")
+#Scss(Warhinczyk)
 
-Warhinczyk.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+#Warhinczyk.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 
-Warhinczyk.secret_key = 'BAD_SECRET_KEY'
+#Warhinczyk.secret_key = 'BAD_SECRET_KEY'
 #-------------------------------------------------------------------------
 class Game:
     def __init__(self, field):
@@ -374,5 +373,5 @@ def movep6():
 #   return render_template('game.html', player1=player1, current_field=current_field, pola=pola )
 
 
-if __name__ in "__main__":
-    Warhinczyk.run(debug=True)
+#if __name__ in "__main__":
+#    Warhinczyk.run(debug=True)

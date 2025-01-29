@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}
+    <title>Warhinczyk</title>
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="content">
+    <br>
+    <h1>Warhinczyk</h1>
+    <br><br>
+    <em style="color:rgb(145, 145, 7);"> Player 1 - pionki żółte</em>
+    <br>
+    <em style="color:red;"> Player 2 - pionki czerwone</em>
+    <br>
+    <em> Gra do 30 punktów</em>
+    <br><br>
+    <p> Pionki startują z pola 0, "kładzione" są dopiero po "rzucie kostką" (czyli de facto rzut + 1) </p>
+    <p> Kolejny tryb wybiera przegrany. Za każdy wygrany tryb +10 punktów </p><br>
+    <p> Tryb 1 - po wylosowaniu ilości pól, jeżeli wypadnie pozycja drugiego gracza,
+    <p>    twój pionek zostaje strącony</p>
+    <p> Tryb 2 - po wylosowaniu ilości pól, jeżeli wypadnie pozycja drugiego gracza,
+    <p>    jego pionek zostaje strącony</p>
+    <p> Tryb 3 - po wylosowaniu ilości pól, jeżeli wypadnie pozycja drugiego gracza,
+    <p>    twój pionek musi iść na pole o 1 mniejsze</p>
+    <br><br><br><br><br><br><br><br>
+    <a href="/"> Menu </a>
+    <br><br><br>
+</div>
+{% endblock %}
+</body>
+</html>
